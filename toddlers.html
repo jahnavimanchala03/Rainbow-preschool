@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toddler Program | Rainbow Pre School</title>
+    <style>
+        :root {
+            --primary: #FF9933;
+            --secondary: #8BC34A;
+            --accent: #FF5C8D;
+            --light: #F8F9FA;
+            --dark: #343A40;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .top-bar {
+            background: linear-gradient(to right, #FF9933, #FFCC33, #8BC34A, #33B5E5, #8A2BE2, #FF5C8D);
+            height: 8px;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            color: var(--dark);
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .logo-text span {
+            font-weight: 400;
+            font-size: 16px;
+            display: block;
+            color: var(--accent);
+        }
+        
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu-item {
+            margin-left: 30px;
+        }
+        
+        .menu-link {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .menu-link:hover {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #e07e1b;
+        }
+        
+        /* Program Hero Section */
+        .program-hero {
+            background: url('images/ryan-fields-Xz7MMD5tZwA-unsplash.jpg') center/cover;
+            height: 400px;
+            position: relative;
+            color: white;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .program-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .program-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Program Content */
+        .program-content {
+            padding: 80px 0;
+        }
+        
+        .program-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .program-info {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .program-info h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .program-info p {
+            margin-bottom: 20px;
+        }
+        
+        .program-sidebar {
+            flex: 1;
+            min-width: 250px;
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .curriculum-list {
+            margin-top: 30px;
+        }
+        
+        .curriculum-item {
+            margin-bottom: 30px;
+        }
+        
+        .curriculum-item h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-section h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .sidebar-list {
+            list-style: none;
+        }
+        
+        .sidebar-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+        
+        .sidebar-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .secondary-button {
+            background-color: var(--light);
+            color: var(--dark);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 1px solid var(--primary);
+        }
+        
+        .secondary-button:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .footer-title:after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, #FF9933, #FFCC33, #8BC34A, #33B5E5, #8A2BE2, #FF5C8D);
+            margin-top: 10px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #adb5bd;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+            }
+            
+            .program-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .program-hero p {
+                font-size: 1rem;
+            }
+            
+            .program-details {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-bar"></div>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <svg class="logo-img" viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Sky background with subtle gradient -->
+                        <rect x="0" y="0" width="240" height="70" fill="#87CEEB" />
+                        
+                        <!-- Natural looking clouds -->
+                        <ellipse cx="30" cy="20" rx="15" ry="8" fill="white" opacity="0.9" />
+                        <ellipse cx="40" cy="15" rx="20" ry="10" fill="white" opacity="0.9" />
+                        <ellipse cx="55" cy="22" rx="15" ry="7" fill="white" opacity="0.9" />
+                        
+                        <ellipse cx="170" cy="15" rx="18" ry="9" fill="white" opacity="0.9" />
+                        <ellipse cx="190" cy="20" rx="20" ry="8" fill="white" opacity="0.9" />
+                        
+                        <!-- Sun with soft glow -->
+                        <circle cx="200" cy="25" r="12" fill="#FDB813" />
+                        <circle cx="200" cy="25" r="16" fill="#FDB813" opacity="0.3" />
+                        <circle cx="200" cy="25" r="20" fill="#FDB813" opacity="0.1" />
+                        
+                        <!-- Realistic mountain silhouette with texture -->
+                        <path d="M0,70 L30,40 C35,42 40,38 45,40 C50,35 55,38 60,35 C65,40 70,37 75,42 C80,35 85,40 90,35 C95,39 100,35 105,40 L110,30 C115,35 120,30 125,35 C130,30 135,35 140,32 C145,38 150,30 155,35 C160,30 165,33 170,30 C175,35 180,32 185,38 C190,30 195,35 200,30 C210,35 220,30 230,40 L240,70 Z" fill="#6B8E23" />
+                        <path d="M0,70 L30,40 C35,42 40,38 45,40 C50,35 55,38 60,35 C65,40 70,37 75,42 C80,35 85,40 90,35 C95,39 100,35 105,40 L110,30 C115,35 120,30 125,35 C130,30 135,35 140,32 C145,38 150,30 155,35 C160,30 165,33 170,30 C175,35 180,32 185,38 C190,30 195,35 200,30 C210,35 220,30 230,40 L240,70 Z" fill="#556B2F" opacity="0.3" />
+                        
+                        <!-- Natural rainbow with softer colors and transparency -->
+                        <path d="M20,70 C70,10 170,10 220,70" stroke="#FF6B6B" stroke-width="6" fill="none" opacity="0.7" />
+                        <path d="M30,70 C75,20 165,20 210,70" stroke="#FFC44D" stroke-width="6" fill="none" opacity="0.7" />
+                        <path d="M40,70 C80,30 160,30 200,70" stroke="#FFEA5C" stroke-width="6" fill="none" opacity="0.7" />
+                        <path d="M50,70 C85,35 155,35 190,70" stroke="#91E66E" stroke-width="6" fill="none" opacity="0.7" />
+                        <path d="M60,70 C90,40 150,40 180,70" stroke="#7CD5E6" stroke-width="6" fill="none" opacity="0.7" />
+                        <path d="M70,70 C95,45 145,45 170,70" stroke="#9D94FF" stroke-width="6" fill="none" opacity="0.7" />
+                        
+                        <!-- Ground with subtle texture -->
+                        <rect x="0" y="70" width="240" height="30" fill="#8B6914" />
+                        <rect x="0" y="70" width="240" height="30" fill="#654321" opacity="0.3" />
+                        
+                        <!-- School name integrated into the scenery -->
+                        <rect x="20" y="75" width="200" height="20" rx="5" fill="white" opacity="0.9" />
+                        <text x="120" y="90" font-family="Trebuchet MS, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">RAINBOW PRE SCHOOL</text>
+                    </svg>
+                    <div class="logo-text">
+                        RAINBOW<span>PRE SCHOOL</span>
+                    </div>
+                </div>
+                <ul class="menu">
+                    <li class="menu-item"><a href="index.html" class="menu-link">Home</a></li>
+                    <li class="menu-item"><a href="index.html#about" class="menu-link">About</a></li>
+                    <li class="menu-item"><a href="index.html#programs" class="menu-link">Programs</a></li>
+                    <li class="menu-item"><a href="index.html#contact" class="menu-link">Contact</a></li>
+                    <li class="menu-item"><a href="enrollment.html" class="cta-button">Enroll Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="program-hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Toddler Program</h1>
+                <p>Nurturing growth and discovery for children ages 18-36 months</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="program-content">
+        <div class="container">
+            <div class="program-details">
+                <div class="program-info">
+                    <h2>About Our Toddler Program</h2>
+                    <p>Our Toddler Program at Rainbow Pre School is designed to create a warm, responsive environment where your young child can explore and develop confidence. We understand that toddlers are in a critical period of development, with rapidly expanding language skills, growing independence, and curiosity about the world around them.</p>
+                    
+                    <p>Our experienced teachers provide attentive care and guidance, creating a safe space for toddlers to explore their environment, develop social skills, and build a foundation for future learning. We maintain low teacher-to-child ratios to ensure each child receives the individual attention they need.</p>
+                    
+                    <div class="curriculum-list">
+                        <div class="curriculum-item">
+                            <h3>Language Development</h3>
+                            <p>We support your toddler's emerging language skills through stories, songs, and continuous conversation throughout the day. Our classrooms are rich with print materials, pictures, and labels to help children connect words with objects and ideas.</p>
+                        </div>
+                        
+                        <div class="curriculum-item">
+                            <h3>Sensory Exploration</h3>
+                            <p>Toddlers learn best through their senses. Our classrooms offer varied sensory experiences including water play, sand tables, textured materials, and art projects that encourage exploration through touch, sight, sound, and movement.</p>
+                        </div>
+                        
+                        <div class="curriculum-item">
+                            <h3>Social Development</h3>
+                            <p>We guide toddlers in developing positive relationships with peers and teachers. Children learn to take turns, share, and express their feelings appropriately in a supportive environment.</p>
+                        </div>
+                        
+                        <div class="curriculum-item">
+                            <h3>Physical Development</h3>
+                            <p>Our program includes both fine and gross motor activities to support physical development. Toddlers engage in activities like stacking blocks, using puzzles, climbing, dancing, and outdoor play to build strength, coordination, and body awareness.</p>
+                        </div>
+                        
+                        <div class="curriculum-item">
+                            <h3>Cognitive Skills</h3>
+                            <p>Through age-appropriate activities and play, we introduce basic concepts such as colors, shapes, counting, and cause-and-effect relationships. Our curriculum encourages problem-solving and critical thinking in ways that engage toddlers' natural curiosity.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="program-sidebar">
+                    <div class="sidebar-section">
+                        <h3>Program Details</h3>
+                        <ul class="sidebar-list">
+                            <li>Ages: 18-36 months</li>
+                            <li>Student-to-teacher ratio: 4:1</li>
+                            <li>Full-time and part-time options</li>
+                            <li>Nutritious meals and snacks provided</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3>Daily Schedule</h3>
+                        <p>Our toddler day includes:</p>
+                        <ul class="sidebar-list">
+                            <li>Morning circle time</li>
+                            <li>Sensory exploration</li>
+                            <li>Outdoor play</li>
+                            <li>Music and movement</li>
+                            <li>Story time</li>
+                            <li>Rest/nap time</li>
+                            <li>Small group activities</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3>Ready to Enroll?</h3>
+                        <p>We'd love to welcome your toddler to our program!</p>
+                        <a href="enrollment.html" class="cta-button" style="margin-top: 15px; display: inline-block;">Enroll Now</a>
+                        <a href="schedule-tour.html" class="secondary-button" style="margin-top: 10px; display: inline-block;">Schedule a Tour</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3 class="footer-title">Rainbow Pre School</h3>
+                    <p>Where every child's potential shines through in a spectrum of possibilities.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">FB</a>
+                        <a href="#" class="social-link">IG</a>
+                        <a href="#" class="social-link">YT</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#programs">Programs</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="toddlers.html">Toddlers</a></li>
+                        <li><a href="preschool.html">Preschool</a></li>
+                        <li><a href="prek.html">Pre-K</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <p>7604 Rio Guadalupe Pl NE<br>Albuquerque, NM 87122<br>Phone: (505) 123-4567<br>Email: info@rainbowpreschool-abq.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Rainbow Pre School LLC. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all links with anchor references
+            const anchorLinks = document.querySelectorAll('a[href^="#"]');
+            
+            // Add click event listener to each anchor link
+            anchorLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Get the target element
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    // Scroll to the target element
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

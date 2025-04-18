@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule a Tour | Rainbow Pre School</title>
+    <style>
+        :root {
+            --primary: #FF9933;
+            --secondary: #8BC34A;
+            --accent: #FF5C8D;
+            --light: #F8F9FA;
+            --dark: #343A40;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .top-bar {
+            background: linear-gradient(to right, #FF9933, #FFCC33, #8BC34A, #33B5E5, #8A2BE2, #FF5C8D);
+            height: 8px;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            color: var(--dark);
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .logo-text span {
+            font-weight: 400;
+            font-size: 16px;
+            display: block;
+            color: var(--accent);
+        }
+        
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu-item {
+            margin-left: 30px;
+        }
+        
+        .menu-link {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .menu-link:hover {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #e07e1b;
+        }
+        
+        /* Tour Hero Section */
+        .tour-hero {
+            background: url('images/aedrian-salazar-AfXDm5I-yDo-unsplash.jpg') center/cover;
+            height: 300px;
+            position: relative;
+            color: white;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .tour-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .tour-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Tour Content */
+        .tour-content {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #FF9933, #FFCC33, #8BC34A, #33B5E5, #8A2BE2, #FF5C8D);
+            margin: 15px auto 0;
+        }
+        
+        .tour-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .tour-benefits {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .benefit-item {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--light);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .benefit-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .benefit-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .benefit-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Tour Scheduler */
+        .scheduler-section {
+            padding: 60px 0;
+            background-color: var(--light);
+        }
+        
+        .scheduler-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .scheduler-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .scheduler-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .scheduler-form h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .scheduler-step {
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 35px;
+            height: 35px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .step-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .calendar-container {
+            margin-bottom: 20px;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .calendar-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .calendar-nav button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        .calendar {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .calendar th, .calendar td {
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .calendar th {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .calendar td {
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .calendar td:hover:not(.disabled) {
+            background-color: #f0f0f0;
+        }
+        
+        .calendar .selected {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .calendar .disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .time-slot {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .time-slot:hover:not(.booked) {
+            border-color: var(--primary);
+        }
+        
+        .time-slot.selected {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .time-slot.booked {
+            background-color: #f5f5f5;
+            color: #aaa;
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            display: block;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e07e1b;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 60px 0;
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .faq-question {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            padding-right: 30px;
+        }
+        
+        .faq-question:after {
+            content: '+';
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-question:after {
+            content: '−';
+        }
+        
+        .faq-answer {
+            display: none;
+            padding-left: 15px;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        /* Required fields */
+        .required:after {
+            content: " *";
+            color: var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .footer-title:after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, #FF9933, #FFCC33, #8BC34A, #33B5E5, #8A2BE2, #FF5C8D);
+            margin-top: 10px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #adb5bd;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+            }
+            
+            .tour-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .tour-hero p {
+                font-size: 1rem;
+            }
+            
+            .scheduler-container {
+                flex-direction: column;
+            }
+            
+            .time-slots {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-bar"></div>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <svg class="logo-img" viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Sky background with subtle gradient -->
+                        <rect x="0" y="0" width="240" height="70" fill="#87CEEB" />
+                        
+                        <!-- Natural looking clouds -->
+                        <ellipse cx="30" cy="20" rx="15" ry="8" fill="white" opacity="0.9" />
+                        <ellipse cx="40" cy="15" rx="20" ry="10" fill="white" opacity="0.9" />
+                        <ellipse cx="55" cy="22" rx="15" ry="7" fill="white" opacity="0.9" />
+                        
+                        <ellipse cx="170" cy="15" rx="18" ry="9" fill="white" opacity="0.9" />
+                        <ellipse cx="190" cy="20" rx="20" ry="8" fill="white" opacity="0.9" />
+                        
+                        <!-- Sun with soft glow -->
+                        <circle cx="200" cy="25" r="12" fill="#FDB813" />
+                        <circle cx="200" cy="25" r="16" fill="#FDB813" opacity="0.3" />
+                        <circle cx="200" cy="25" r="20" fill="#FDB813" opacity="0.1" />
+                        
+                        <!-- Realistic mountain silhouette with texture -->
+                        <path d="M0,70 L30,40 C35,42 40,38 45,40 C50,35 55,38 60,35 C65,40 70,37 75,42 C80,35 85,40 90,35 C95,39 100,35 105,40 L110,30 C115,35 120,30 125,35 C130,30 135,35 140,32 C145,38 150,30 155,35 C160,30 165,33 170,30 C175,35 180,32 185,38 C190,30 195,35 200,30 C210,35 220,30 230,40 L240,70 Z" fill="#6B8E23" />
+                        <path d="M0,70 L30,40 C35,42 40,38 45,40 C50,35 55,38 60,35 C65,40 70,37 75,42 C80,35 85,40 90,35 C95,39 100,35 105,40 L110,30 C115,35 120,30 125,35 C130,30 135,35 140,32 C145,38 150,30 155,35 C160,30 165,33 170,30 C175,35 180,32 185,38 C190,30 195,35 200,30 C210,35 220,30 230,40 L240,70 Z" fill="#556B2F" opacity="0.3" />
+                        
+                        <!-- Natural rainbow with softer colors and transparency -->
+                        <path d="M20,70 C70,10 170,10 220,70" stroke="#FF6B6B" stroke-width="6" fill="none" opacity="0.7" />
+                        <path d="M30,70 C75,20 165,20 210,70" stroke="#FFC44D" stroke-width="6" fill="none" opacity="0.7" />
+                        <path d="M40,70 C80,30 160,30 200,70" stroke="#FFEA5C" stroke-width="6" fill="none" opacity="0.7" />
+                        <path d="M50,70 C85,35 155,35 190,70" stroke="#91E66E" stroke-width="6" fill="none" opacity="0.7" />
+                        <path d="M60,70 C90,40 150,40 180,70" stroke="#7CD5E6" stroke-width="6" fill="none" opacity="0.7" />
+                        <path d="M70,70 C95,45 145,45 170,70" stroke="#9D94FF" stroke-width="6" fill="none" opacity="0.7" />
+                        
+                        <!-- Ground with subtle texture -->
+                        <rect x="0" y="70" width="240" height="30" fill="#8B6914" />
+                        <rect x="0" y="70" width="240" height="30" fill="#654321" opacity="0.3" />
+                        
+                        <!-- School name integrated into the scenery -->
+                        <rect x="20" y="75" width="200" height="20" rx="5" fill="white" opacity="0.9" />
+                        <text x="120" y="90" font-family="Trebuchet MS, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">RAINBOW PRE SCHOOL</text>
+                    </svg>
+                    <div class="logo-text">
+                        RAINBOW<span>PRE SCHOOL</span>
+                    </div>
+                </div>
+                <ul class="menu">
+                    <li class="menu-item"><a href="index.html" class="menu-link">Home</a></li>
+                    <li class="menu-item"><a href="index.html#about" class="menu-link">About</a></li>
+                    <li class="menu-item"><a href="index.html#programs" class="menu-link">Programs</a></li>
+                    <li class="menu-item"><a href="index.html#contact" class="menu-link">Contact</a></li>
+                    <li class="menu-item"><a href="enrollment.html" class="cta-button">Enroll Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="tour-hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Schedule a Tour</h1>
+                <p>Visit our campus and see firsthand what makes Rainbow Pre School special</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-content">
+        <div class="container">
+            <h2 class="section-title">Experience Rainbow Pre School</h2>
+            <div class="tour-intro">
+                <p>We believe the best way to understand our approach to early childhood education is to experience our facility in person. During your tour, you'll have the opportunity to see our classrooms, meet our teachers, and learn more about our curriculum and philosophy.</p>
+            </div>
+            
+            <div class="tour-benefits">
+                <div class="benefit-item">
+                    <div class="benefit-icon">👨‍👩‍👧‍👦</div>
+                    <h3 class="benefit-title">Meet Our Teachers</h3>
+                    <p>Get to know our qualified, passionate educators who create a nurturing environment for your child to learn and grow.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🏫</div>
+                    <h3 class="benefit-title">Explore Our Facility</h3>
+                    <p>Tour our thoughtfully designed classrooms, playground, and specialized learning spaces equipped for children of all ages.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">📚</div>
+                    <h3 class="benefit-title">Learn About Our Curriculum</h3>
+                    <p>Discover how our age-appropriate curriculum balances structured learning with creative play and exploration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="scheduler-section">
+        <div class="container">
+            <h2 class="section-title">Book Your Tour</h2>
+            
+            <div class="scheduler-container">
+                <div class="scheduler-info">
+                    <div class="scheduler-step">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Choose Your Date</h3>
+                        <p>Select a convenient day to visit our facility. Tours are available Monday through Friday.</p>
+                    </div>
+                    
+                    <div class="scheduler-step">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Select a Time</h3>
+                        <p>Pick a time that works for you. We recommend coming during our active hours (9:00 AM - 11:00 AM or 3:00 PM - 5:00 PM) to see our programs in action.</p>
+                    </div>
+                    
+                    <div class="scheduler-step">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Provide Your Details</h3>
+                        <p>Share your contact information and any specific interests so we can personalize your tour experience.</p>
+                    </div>
+                    
+                    <div class="scheduler-step">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Confirmation</h3>
+                        <p>Once you submit your request, you'll receive an email confirmation. A member of our team will also call you to confirm your tour time.</p>
+                    </div>
+                </div>
+                
+                <div class="scheduler-form">
+                    <h3>Select Tour Date & Time</h3>
+                    
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <div class="calendar-title">April 2025</div>
+                            <div class="calendar-nav">
+                                <button type="button" id="prev-month">←</button>
+                                <button type="button" id="next-month">→</button>
+                            </div>
+                        </div>
+                        
+                        <table class="calendar">
+                            <thead>
+                                <tr>
+                                    <th>Sun</th>
+                                    <th>Mon</th>
+                                    <th>Tue</th>
+                                    <th>Wed</th>
+                                    <th>Thu</th>
+                                    <th>Fri</th>
+                                    <th>Sat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="disabled">30</td>
+                                    <td class="disabled">31</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                    <td class="disabled">5</td>
+                                </tr>
+                                <tr>
+                                    <td class="disabled">6</td>
+                                    <td>7</td>
+                                    <td>8</td>
+                                    <td>9</td>
+                                    <td>10</td>
+                                    <td>11</td>
+                                    <td class="disabled">12</td>
+                                </tr>
+                                <tr>
+                                    <td class="disabled">13</td>
+                                    <td>14</td>
+                                    <td>15</td>
+                                    <td>16</td>
+                                    <td>17</td>
+                                    <td>18</td>
+                                    <td class="disabled">19</td>
+                                </tr>
+                                <tr>
+                                    <td class="disabled">20</td>
+                                    <td>21</td>
+                                    <td>22</td>
+                                    <td>23</td>
+                                    <td>24</td>
+                                    <td>25</td>
+                                    <td class="disabled">26</td>
+                                </tr>
+                                <tr>
+                                    <td class="disabled">27</td>
+                                    <td>28</td>
+                                    <td>29</td>
+                                    <td>30</td>
+                                    <td class="disabled">1</td>
+                                    <td class="disabled">2</td>
+                                    <td class="disabled">3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Available Time Slots</h4>
+                    <div class="time-slots">
+                        <div class="time-slot">9:00 AM</div>
+                        <div class="time-slot">9:30 AM</div>
+                        <div class="time-slot booked">10:00 AM</div>
+                        <div class="time-slot">10:30 AM</div>
+                        <div class="time-slot">11:00 AM</div>
+                        <div class="time-slot booked">3:00 PM</div>
+                        <div class="time-slot">3:30 PM</div>
+                        <div class="time-slot">4:00 PM</div>
+                        <div class="time-slot">4:30 PM</div>
+                    </div>
+                    
+                    <form action="#" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="parent-name" class="required">Your Name</label>
+                                <input type="text" id="parent-name" name="parent-name" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" class="required">Email</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="required">Phone</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="child-age" class="required">Child's Age</label>
+                                <select id="child-age" name="child-age" class="form-control" required>
+                                    <option value="" disabled selected>Select age group</option>
+                                    <option value="under-18-months">Under 18 months</option>
+                                    <option value="18-36-months">18-36 months (Toddler)</option>
+                                    <option value="3-4-years">3-4 years (Preschool)</option>
+                                    <option value="4-5-years">4-5 years (Pre-K)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="interests">Areas of Interest (Optional)</label>
+                                <select id="interests" name="interests" class="form-control" multiple>
+                                    <option value="curriculum">Curriculum</option>
+                                    <option value="facility">Facility Tour</option>
+                                    <option value="teachers">Meeting Teachers</option>
+                                    <option value="safety">Safety Procedures</option>
+                                    <option value="enrollment">Enrollment Information</option>
+                                </select>
+                                <small class="form-note">Hold Ctrl (or Cmd on Mac) to select multiple options</small>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="comments">Additional Questions or Comments</label>
+                                <textarea id="comments" name="comments" class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Schedule My Tour</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">How long does a typical tour last?</div>
+                    <div class="faq-answer">
+                        <p>Our tours typically last around 30-45 minutes, depending on your questions and interests. We'll make sure you have time to see all areas of our facility and get all your questions answered.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Should I bring my child to the tour?</div>
+                    <div class="faq-answer">
+                        <p>You're welcome to bring your child along! It can be helpful for them to see the environment and meet some of the teachers. However, if you prefer to tour first on your own, that's perfectly fine too.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What should I expect during the tour?</div>
+                    <div class="faq-answer">
+                        <p>During your tour, you'll be guided by a member of our administrative team who will show you our classrooms, outdoor play areas, and other facilities. You'll learn about our curriculum, daily schedules, and have the opportunity to meet teachers and observe classroom activities if you visit during program hours.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Can I schedule a tour outside of the available times?</div>
+                    <div class="faq-answer">
+                        <p>We understand that schedules can be challenging. If none of our listed times work for you, please contact us directly at (505) 123-4567, and we'll do our best to accommodate your schedule.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Is there any information I should bring to the tour?</div>
+                    <div class="faq-answer">
+                        <p>There's no need to bring any specific documents for the tour. If you're interested in enrolling after the tour, we can provide you with all the necessary enrollment forms and information at that time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3 class="footer-title">Rainbow Pre School</h3>
+                    <p>Where every child's potential shines through in a spectrum of possibilities.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">FB</a>
+                        <a href="#" class="social-link">IG</a>
+                        <a href="#" class="social-link">YT</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#programs">Programs</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="toddlers.html">Toddlers</a></li>
+                        <li><a href="preschool.html">Preschool</a></li>
+                        <li><a href="prek.html">Pre-K</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <p>7604 Rio Guadalupe Pl NE<br>Albuquerque, NM 87122<br>Phone: (505) 123-4567<br>Email: info@rainbowpreschool-abq.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Rainbow Pre School LLC. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Calendar date selection
+            const calendarDays = document.querySelectorAll('td:not(.disabled)');
+            
+            calendarDays.forEach(day => {
+                day.addEventListener('click', function() {
+                    // Remove selected class from all dates
+                    calendarDays.forEach(d => d.classList.remove('selected'));
+                    
+                    // Add selected class to clicked date
+                    this.classList.add('selected');
+                });
+            });
+            
+            // Time slot selection
+            const timeSlots = document.querySelectorAll('.time-slot:not(.booked)');
+            
+            timeSlots.forEach(slot => {
+                slot.addEventListener('click', function() {
+                    // Remove selected class from all time slots
+                    timeSlots.forEach(s => s.classList.remove('selected'));
+                    
+                    // Add selected class to clicked time slot
+                    this.classList.add('selected');
+                });
+            });
+            
+            // FAQ toggle
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    faqItem.classList.toggle('active');
+                });
+            });
+            
+            // Initialize smooth scrolling for anchor links
+            const anchorLinks = document.querySelectorAll('a[href^="#"]');
+            
+            anchorLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

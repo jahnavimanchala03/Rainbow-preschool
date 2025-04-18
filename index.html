@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainbow Pre School LLC - Albuquerque, NM</title>
+    <style>
+        :root {
+            --primary: #FF9933;
+            --secondary: #8BC34A;
+            --accent: #FF5C8D;
+            --light: #F8F9FA;
+            --dark: #343A40;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        
+        .logo {
+        display: flex;
+        align-items: center;
+         }
+
+        .logo-img {
+        height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.logo-text-top {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(to right, 
+        #FF5C8D, 
+        #8A2BE2, 
+        #33B5E5, 
+        #8BC34A, 
+        #FFCC33
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-family: 'Montserrat', sans-serif; /* A clean, modern font */
+}
+
+.logo-text-bottom {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--dark);
+    font-family: 'Montserrat', sans-serif;
+}
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .top-bar {
+            background: linear-gradient(to right, #FF9933, #FFCC33, #8BC34A, #33B5E5, #8A2BE2, #FF5C8D);
+            height: 8px;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu-item {
+            margin-left: 30px;
+        }
+        
+        .menu-link {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .menu-link:hover {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #e07e1b;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('images/steven-libralon-Do1GQljlNk8-unsplash.jpg') center/cover;
+            height: 500px;
+            position: relative;
+            color: white;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* About Section */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #FF9933, #FFCC33, #8BC34A, #33B5E5, #8A2BE2, #FF5C8D);
+            margin: 15px auto 0;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Programs Section */
+        .programs {
+            background-color: var(--light);
+        }
+        
+        .program-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .program-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            transition: transform 0.3s;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .program-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .program-content {
+            padding: 20px;
+        }
+        
+        .program-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .program-text {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--light);
+        }
+        
+        .testimonial-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        .author-name {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .author-title {
+            font-size: 14px;
+            color: #6c757d;
+        }
+        
+        /* Contact Section */
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .info-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .info-icon {
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+            color: var(--primary);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e07e1b;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .footer-title:after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, #FF9933, #FFCC33, #8BC34A, #33B5E5, #8A2BE2, #FF5C8D);
+            margin-top: 10px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #adb5bd;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-bar"></div>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Rainbow Pre School Logo" class="logo-img">
+                    <div class="logo-text">
+                        Rainbow Pre School
+                        <span>Learning & Growing Together</span>
+                    </div>
+                </div>
+                <ul class="menu">
+                    <li class="menu-item"><a href="#home" class="menu-link">Home</a></li>
+                    <li class="menu-item"><a href="#about" class="menu-link">About</a></li>
+                    <li class="menu-item"><a href="#programs" class="menu-link">Programs</a></li>
+                    <li class="menu-item"><a href="#contact" class="menu-link">Contact</a></li>
+                    <li class="menu-item"><a href="#enroll" class="cta-button">Enroll Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Where Learning & Fun Come Together</h1>
+                <p>Rainbow Pre School provides a nurturing environment where children can explore, learn, and grow. Our child-centered approach focuses on developing the whole child.</p>
+                <a href="schedule-tour.html" class="secondary-button">Schedule a Tour</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Rainbow Pre School</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>At Rainbow Pre School, we believe in creating a colorful and vibrant learning environment that inspires curiosity and creativity in young minds. Established in 2025, our preschool offers a unique blend of play-based learning and structured activities designed to prepare children for kindergarten and beyond.</p>
+                    <p>Our dedicated teachers are passionate about early childhood education and are committed to providing individualized attention to each child. We focus on developing social, emotional, cognitive, and physical skills through engaging activities that make learning fun.</p>
+                    <p>Located in the heart of Albuquerque at 7604 Rio Guadalupe Pl NE, our facility is designed with safety and learning in mind. We invite you to schedule a visit and see why families choose Rainbow Pre School for their children's early education journey.</p>
+                </div>
+                <div class="about-image">
+                    <img src="images\cdc-UqTrGSohyCs-unsplash.jpg" alt="Children playing and learning">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="section programs">
+        <div class="container">
+            <h2 class="section-title">Our Programs</h2>
+            <div class="program-cards">
+                <div class="program-card">
+                    <img src="images\jelleke-vanooteghem-zpQpn5N1na8-unsplash.jpg" alt="Toddler Program" class="program-img">
+                    <div class="program-content">
+                        <h3 class="program-title">Toddlers (18-36 months)</h3>
+                        <p class="program-text">Our toddler program focuses on language development, sensory exploration, and social interaction.</p>
+                        <a href="toddlers.html" class="cta-button">Learn More</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <img src="images\taylor-heery-g7dUm6lRvtQ-unsplash.jpg" alt="Preschool Program" class="program-img">
+                    <div class="program-content">
+                        <h3 class="program-title">Preschool (3-4 years)</h3>
+                        <p class="program-text">Our preschool curriculum balances structured learning with creative play to build foundational skills.</p>
+                        <a href="preschool.html" class="cta-button">Learn More</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <img src="images\ashton-bingham-SAHBl2UpXco-unsplash.jpg" alt="Pre-K Program" class="program-img">
+                    <div class="program-content">
+                        <h3 class="program-title">Pre-K (4-5 years)</h3>
+                        <p class="program-text">Our Pre-K program prepares children for kindergarten with a focus on literacy, math, and independence.</p>
+                        <a href="prek.html" class="cta-button">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div>
+                            <h4>Address</h4>
+                            <p>7604 Rio Guadalupe Pl NE<br>Albuquerque, NM 87122</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">📞</div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>(505) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">✉️</div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@rainbowpreschool-abq.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">🕒</div>
+                        <div>
+                            <h4>Hours of Operation</h4>
+                            <p>Monday - Friday: 7:00 AM - 6:00 PM<br>Saturday & Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>  
+                <div class="contact-form">
+                    <form action="https://formspree.io/f/xanekraz" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" class="form-control" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <select name="interest" class="form-control" required>
+                                <option value="" disabled selected>I'm interested in...</option>
+                                <option value="tour">Scheduling a Tour</option>
+                                <option value="enrollment">Enrollment Information</option>
+                                <option value="programs">Program Details</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <!-- Optional but recommended: Anti-spam honeypot field -->
+                        <input type="text" name="_gotcha" style="display:none">
+                        <!-- Optional: Custom redirect after submission -->
+                        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3 class="footer-title">Rainbow Pre School</h3>
+                    <p>Where every child's potential shines through in a spectrum of possibilities.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">IG</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="#toddler-details">Toddlers</a></li>
+                        <li><a href="#preschool-details">Preschool</a></li>
+                        <li><a href="#prek-details">Pre-K</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="copyright">
+                &copy; 2025 Rainbow Pre School LLC. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all links with anchor references
+            const anchorLinks = document.querySelectorAll('a[href^="#"]');
+            
+            // Add click event listener to each anchor link
+            anchorLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Get the target element
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    // Scroll to the target element
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
