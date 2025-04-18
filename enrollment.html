@@ -441,7 +441,7 @@
             </div>
             
             <div class="enrollment-form">
-                <form action="#" method="POST">
+                <form action="https://formspree.io/f/xanekraz" method="POST">
                     <div class="form-section">
                         <h3>Child Information</h3>
                         <div class="form-row">
@@ -542,6 +542,7 @@
                                 <label for="program" class="required">Desired Program</label>
                                 <select id="program" name="program" class="form-control" required>
                                     <option value="" disabled selected>Select program</option>
+                                    <option value="Infants">Infants (6-18 months)</option>
                                     <option value="toddler">Toddlers (18-36 months)</option>
                                     <option value="preschool">Preschool (3-4 years)</option>
                                     <option value="prek">Pre-K (4-5 years)</option>
@@ -615,7 +616,8 @@
                             </div>
                         </div>
                     </div>
-                    
+                    <input type="hidden" name="_next" value="https://sage-gnome-3406ad.netlify.app/">
+                    <input type="text" name="_gotcha" style="display:none">
                     <button type="submit" class="submit-btn">Submit Enrollment Application</button>
                 </form>
             </div>
